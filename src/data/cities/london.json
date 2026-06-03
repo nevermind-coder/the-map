@@ -1,0 +1,267 @@
+{
+  "id": "london",
+  "name": "London",
+  "country": "United Kingdom",
+  "cityType": 3,
+  "cityTypology": "polycentric_walkable",
+  "coverageRange": [7, 9],
+  "valueMap": {
+    "historic_cultural": ["South Bank / Bermondsey", "Greenwich", "Marylebone"],
+    "gastronomic": ["Soho / Covent Garden", "South Bank / Bermondsey", "Islington / Angel", "Marylebone"],
+    "nightlife": ["Shoreditch", "Soho / Covent Garden", "Brixton"],
+    "local_commerce": ["Brixton", "Islington / Angel", "Notting Hill"],
+    "nature": ["Greenwich"],
+    "scenic_routes": ["South Bank / Bermondsey", "Greenwich", "Notting Hill"]
+  },
+  "contextualTagsAvailable": ["counterculture", "lgbtq", "fandom"],
+  "districts": [
+    {
+      "id": "shoreditch",
+      "name": "Shoreditch",
+      "oneLineSummary": "East London's creative engine — street art, tech startups, cocktail bars, and heavy nightlife.",
+      "description": "Shoreditch is the city's most self-consciously cool neighborhood, straddling the border between creative energy and tourist saturation. The street art is world-class, the brunch scene is excellent, and the nightlife is some of London's best. Brick Lane brings Bengali food and vintage markets. The vibe is young, international, and entrepreneurial. It's a 5-minute Overground to Liverpool Street, making the rest of the city easily accessible. Accommodation ranges from design hotels to trendy hostels.",
+      "hotSpot": "Boxpark on a Friday evening — outdoor street food, DJs, and the peak Shoreditch energy.",
+      "watchOut": "Very loud on Thursday–Saturday nights. Taxis become scarce after midnight.",
+      "bookingTip": "Design hotels fill quickly on weekends. Book midweek for better rates. Avoid the Brick Lane hostel strip — quality varies wildly.",
+      "valueTypesPresent": ["nightlife", "gastronomic", "local_commerce"],
+      "scores": {
+        "daytimeLife": 8,
+        "eveningLife": 9,
+        "clubPresence": "heavy",
+        "proximityToAttractions": 7,
+        "strategicLocation": 8,
+        "pedestrianComfort": 8,
+        "transportConnections": 9,
+        "priceLevel": 5,
+        "authenticity": "mixed",
+        "safety": "soft_crime"
+      },
+      "bestFor": {
+        "Nester": "A neighborhood with strong identity, though not a quiet nest — energy runs high.",
+        "Restorer": "Not recommended — heavy club presence and noise make rest difficult.",
+        "Cartographer": "Excellent transport links and proximity to the City make this a logical hub.",
+        "Wanderer": "Street art, markets, and local cafés reward the explorer who goes beyond the main drag.",
+        "Atmosphere Chaser": "The creative atmosphere is thick — street art, pop-ups, and rooftop bars.",
+        "Connoisseur": "Outstanding brunch, natural wine bars, and the best cocktail culture in East London.",
+        "Energizer": "London's best combination of daytime buzz and serious nightlife."
+      }
+    },
+    {
+      "id": "south-bank",
+      "name": "South Bank / Bermondsey",
+      "oneLineSummary": "London's cultural spine along the Thames — galleries, food markets, architecture, and river walks.",
+      "description": "The South Bank is London's most walkable cultural corridor: Tate Modern, the Globe Theatre, Borough Market, the Hayward Gallery, and the BFI are all within a 20-minute riverside walk. Bermondsey, just behind, adds a more residential layer — antique markets on Saturdays, excellent independent restaurants, and quieter streets. It's an ideal base for visitors who want to walk to culture and history while having a neighbourhood feel in the evening. Accommodation ranges from premium riverside hotels to boutique options inland.",
+      "hotSpot": "Borough Market on a Saturday morning — one of the world's great food markets.",
+      "watchOut": "Riverside hotels carry a significant price premium. Bermondsey is quieter but less central.",
+      "bookingTip": "Stay in Bermondsey proper for better value. The Shard area hotels offer views but at double the price.",
+      "valueTypesPresent": ["scenic_routes", "gastronomic", "historic_cultural"],
+      "scores": {
+        "daytimeLife": 9,
+        "eveningLife": 7,
+        "clubPresence": "none",
+        "proximityToAttractions": 9,
+        "strategicLocation": 9,
+        "pedestrianComfort": 9,
+        "transportConnections": 9,
+        "priceLevel": 4,
+        "authenticity": "mixed",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "A neighbourhood that rewards walking — culture-filled days, calm evenings by the river.",
+        "Restorer": "Bermondsey's quieter streets offer calm without sacrificing access.",
+        "Cartographer": "The single best-positioned neighbourhood in London for cultural tourism.",
+        "Wanderer": "The Bermondsey backstreets hide galleries, workshops, and excellent Sunday markets.",
+        "Atmosphere Chaser": "River walks, market energy, and the Tate Turbine Hall — consistently atmospheric.",
+        "Connoisseur": "Borough Market plus the Bermondsey restaurant scene equals London's food apex.",
+        "Energizer": "Brilliant for daytime energy; evenings are calmer — pair with Shoreditch nights."
+      }
+    },
+    {
+      "id": "notting-hill",
+      "name": "Notting Hill",
+      "oneLineSummary": "Pastel townhouses, Portobello market, and a genteel West London groove.",
+      "description": "Notting Hill has a quietly upscale character that resists the tourist wave even as it attracts it. The Portobello Road market is a genuine Saturday institution. The streets of pastel-painted townhouses are genuinely beautiful. Ladbroke Grove and Golborne Road add a more multicultural, North African edge. It's expensive — very — but the accommodation quality is high and the neighborhood safety is excellent. Notting Hill Carnival in August transforms the streets entirely.",
+      "hotSpot": "Portobello Road on a Saturday before noon — antiques, food stalls, and the famous painted houses.",
+      "watchOut": "Very expensive. Limited central transport (one Tube line). Quieter evenings than East London.",
+      "bookingTip": "Look for townhouse B&Bs on the side streets — they offer the experience at a lower price than the main hotels.",
+      "valueTypesPresent": ["local_commerce", "scenic_routes"],
+      "scores": {
+        "daytimeLife": 8,
+        "eveningLife": 6,
+        "clubPresence": "none",
+        "proximityToAttractions": 7,
+        "strategicLocation": 7,
+        "pedestrianComfort": 9,
+        "transportConnections": 7,
+        "priceLevel": 2,
+        "authenticity": "mixed",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "Beautiful streets, safe, genuinely residential — a calming base to return to.",
+        "Restorer": "Quiet evenings, leafy streets, and an unhurried pace.",
+        "Cartographer": "Good Tube access to the centre; less suited for those covering the whole city.",
+        "Wanderer": "Portobello and Golborne reward slow exploration — hidden record shops and brilliant cafés.",
+        "Atmosphere Chaser": "Saturday market atmosphere is excellent; rest of the week is gentle.",
+        "Connoisseur": "The restaurant and deli scene here is world-class, if pricey.",
+        "Energizer": "Better suited to daytime exploration than nightlife-seeking."
+      }
+    },
+    {
+      "id": "soho-covent-garden",
+      "name": "Soho / Covent Garden",
+      "oneLineSummary": "London's most central, most alive, and most tourist-saturated square mile.",
+      "description": "Soho and Covent Garden are the throbbing centre of London's theatre, dining, nightlife, and shopping. Everything is at walking distance: West End theatres, world-class restaurants, Chinatown, the National Gallery, Trafalgar Square. Oxford Circus is around the corner. The neighbourhood never sleeps and never empties. Accommodation is expensive and the streets are noisy around the clock. For visitors who want maximum proximity and no travel time to anything, this is the answer.",
+      "hotSpot": "Soho's Frith Street on a Tuesday night — restaurants full, bars beginning, the city in full swing.",
+      "watchOut": "Expensive everything. Loud at all hours. Feels very touristy in parts. Book well ahead.",
+      "bookingTip": "The most competitive booking market in London. Book 3+ months ahead for weekend stays. Mid-range options are scarce — it's expensive hotels or chain hotels.",
+      "valueTypesPresent": ["nightlife", "gastronomic", "scenic_routes", "historic_cultural"],
+      "scores": {
+        "daytimeLife": 10,
+        "eveningLife": 10,
+        "clubPresence": "heavy",
+        "proximityToAttractions": 10,
+        "strategicLocation": 10,
+        "pedestrianComfort": 8,
+        "transportConnections": 10,
+        "priceLevel": 1,
+        "authenticity": "touristy",
+        "safety": "soft_crime"
+      },
+      "bestFor": {
+        "Nester": "Hard to nest here — the scale and tourist flow make it more a launching pad than a home.",
+        "Restorer": "Not recommended — constant noise, crowds, and stimulation at all hours.",
+        "Cartographer": "Zero walking time to anything. The ultimate efficiency base for seeing London fast.",
+        "Wanderer": "Best explored but harder to truly wander — everything is known and signposted.",
+        "Atmosphere Chaser": "The atmosphere is constant and intense — theatre, bars, and streets that never quiet.",
+        "Connoisseur": "London's greatest concentration of world-class restaurants in one walkable zone.",
+        "Energizer": "London's maximum energy node — nowhere else combines nightlife, dining, and culture at this density."
+      }
+    },
+    {
+      "id": "brixton",
+      "name": "Brixton",
+      "oneLineSummary": "South London's cultural powerhouse — Afro-Caribbean roots, covered market, serious nightlife.",
+      "description": "Brixton is one of London's most characterful neighbourhoods, with a deep Afro-Caribbean heritage that has shaped its food, music, and identity. Brixton Market and the covered arcades are an outstanding daytime experience. Coldharbour Lane fills with bars and music venues from Thursday. The nightlife is genuine — not a tourist import — and the music culture runs from reggae to techno. It's cheaper than most comparable areas and has one of the best Tube connections in South London.",
+      "hotSpot": "Brixton Village covered market on a Saturday afternoon — every cuisine, every conversation.",
+      "watchOut": "Some street crime around Brixton station at night. Nightlife is loud and late on weekends.",
+      "bookingTip": "Fewer hotels than other areas — Airbnb dominates. Herne Hill and Tulse Hill offer quieter nearby alternatives.",
+      "valueTypesPresent": ["nightlife", "local_commerce", "gastronomic"],
+      "scores": {
+        "daytimeLife": 8,
+        "eveningLife": 9,
+        "clubPresence": "heavy",
+        "proximityToAttractions": 5,
+        "strategicLocation": 6,
+        "pedestrianComfort": 7,
+        "transportConnections": 8,
+        "priceLevel": 8,
+        "authenticity": "local",
+        "safety": "soft_crime"
+      },
+      "bestFor": {
+        "Nester": "A strong local identity — you'll feel part of the neighbourhood within a day.",
+        "Restorer": "Too much nightlife noise for restorative stays — not recommended for this profile.",
+        "Cartographer": "Good Victoria line access; works as a base for South and Central London.",
+        "Wanderer": "The arcades, markets, and side streets reward deep exploration over multiple visits.",
+        "Atmosphere Chaser": "One of London's most genuine local atmospheres — food, music, and cultural identity.",
+        "Connoisseur": "The food scene is outstanding for price — exceptional Caribbean, West African, and fusion.",
+        "Energizer": "The best value nightlife in London — real music, real crowds, and real character."
+      }
+    },
+    {
+      "id": "islington-angel",
+      "name": "Islington / Angel",
+      "oneLineSummary": "North London's literary quarter — independent restaurants, theatres, and a local buzz.",
+      "description": "Islington has a reputation for being comfortable, cultured, and slightly smug about it — all of which is accurate. Upper Street runs for a mile lined with restaurants, cafés, and indie cinemas. The farmers' market on Chapel Market is excellent. The Almeida and King's Head theatres bring a real cultural life to the area. Angel tube station is a 10-minute Victoria line ride to King's Cross and the centre. It's a genuine local neighbourhood with an articulate, middle-class character.",
+      "hotSpot": "Upper Street on a Sunday afternoon — farmers market, brunch queues, and the city at its most relaxed.",
+      "watchOut": "Residential — quieter than central London after 11pm. Slightly disconnected from East and South London nightlife.",
+      "bookingTip": "Limited hotel options — boutique guesthouses and Airbnb are the primary accommodation. Book early.",
+      "valueTypesPresent": ["gastronomic", "local_commerce"],
+      "scores": {
+        "daytimeLife": 8,
+        "eveningLife": 7,
+        "clubPresence": "some",
+        "proximityToAttractions": 7,
+        "strategicLocation": 7,
+        "pedestrianComfort": 8,
+        "transportConnections": 9,
+        "priceLevel": 5,
+        "authenticity": "local",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "A genuinely local neighbourhood with a strong community feel and great coffee.",
+        "Restorer": "Pleasant, unhurried, and quiet enough by 10pm — a solid restorative base.",
+        "Cartographer": "Good Victoria line access with a local character — efficient and pleasant.",
+        "Wanderer": "The side streets behind Upper Street hide excellent independent shops and cafés.",
+        "Atmosphere Chaser": "The Sunday farmers' market and independent theatre scene give it real cultural texture.",
+        "Connoisseur": "One of London's best restaurant-per-street ratios — diverse, quality, and well-priced.",
+        "Energizer": "Good for early evenings; pair with Shoreditch or Soho for late nights."
+      }
+    },
+    {
+      "id": "greenwich",
+      "name": "Greenwich",
+      "oneLineSummary": "Meridian line, Royal Park, naval history, and riverside pubs — London's most scenic eastern base.",
+      "description": "Greenwich combines maritime heritage, royal architecture, and one of London's best parks into a neighbourhood that feels genuinely apart from the city. The Royal Observatory, Cutty Sark, the National Maritime Museum, and the Old Royal Naval College are world-class. The park slopes down to the river with outstanding views of Canary Wharf. The market on weekends is good without being overwhelming. It's quieter than most London picks and the commute to the centre is real (30 minutes via DLR to Bank).",
+      "hotSpot": "Greenwich Park at the top of the hill at sunset — the best view in London, and largely still a secret.",
+      "watchOut": "30+ minutes to central London. Very quiet on weekday evenings. Pricier than comparable distance areas.",
+      "bookingTip": "Few hotel options. Blackheath, the adjacent village, has B&Bs with a better value proposition.",
+      "valueTypesPresent": ["historic_cultural", "scenic_routes", "nature"],
+      "scores": {
+        "daytimeLife": 7,
+        "eveningLife": 5,
+        "clubPresence": "none",
+        "proximityToAttractions": 7,
+        "strategicLocation": 6,
+        "pedestrianComfort": 8,
+        "transportConnections": 7,
+        "priceLevel": 6,
+        "authenticity": "mixed",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "A genuine village feel within the city — park, river, and neighbourhood rhythms.",
+        "Restorer": "One of London's calmest bases — park walks, quiet pubs, and river air.",
+        "Cartographer": "Good DLR access to Canary Wharf and the City, though central London takes time.",
+        "Wanderer": "The park and riverside reward slow exploration — markets, galleries, and hidden alleys.",
+        "Atmosphere Chaser": "The UNESCO World Heritage architecture creates a unique, layered atmosphere.",
+        "Connoisseur": "Quality riverside pubs and the covered market offer a taste of London's best.",
+        "Energizer": "Too quiet for this profile — better as a half-day excursion from a central base."
+      }
+    },
+    {
+      "id": "marylebone",
+      "name": "Marylebone",
+      "oneLineSummary": "Village-scale elegance at the city's centre — independent boutiques, exceptional food, human scale.",
+      "description": "Marylebone is the rare London neighbourhood that has resisted chain saturation while staying central. Marylebone High Street is a model of what a shopping and dining street can be: independent, quality-focused, and walkable. The Wallace Collection is a short detour. Regent's Park is a 10-minute walk north. Baker Street brings Sherlock Holmes tourists. The accommodation is expensive but excellent. It's central enough for everything and calm enough to breathe.",
+      "hotSpot": "Marylebone Farmers' Market on Sunday mornings — the city's best, and remarkably unhurried.",
+      "watchOut": "Expensive — accommodation and restaurants are premium. Baker Street area is touristy.",
+      "bookingTip": "The Chiltern Firehouse area boutique hotels offer the best quality. Book directly for best rates.",
+      "valueTypesPresent": ["gastronomic", "historic_cultural"],
+      "scores": {
+        "daytimeLife": 8,
+        "eveningLife": 6,
+        "clubPresence": "none",
+        "proximityToAttractions": 8,
+        "strategicLocation": 8,
+        "pedestrianComfort": 9,
+        "transportConnections": 8,
+        "priceLevel": 2,
+        "authenticity": "mixed",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "The most liveable central London neighbourhood — human scale, quality, and calm.",
+        "Restorer": "Quiet evenings, excellent restaurants, and park access — a premium restorative base.",
+        "Cartographer": "Central, well-connected, and with the Wallace Collection on the doorstep.",
+        "Wanderer": "The side streets around Marylebone Lane hide remarkable independent shops.",
+        "Atmosphere Chaser": "Understated but rich atmosphere — quality over spectacle.",
+        "Connoisseur": "One of London's finest food and dining destinations — Chiltern Firehouse, Ottolenghi, and more.",
+        "Energizer": "Calm evenings — pair with Soho or Shoreditch for late-night energy."
+      }
+    }
+  ]
+}

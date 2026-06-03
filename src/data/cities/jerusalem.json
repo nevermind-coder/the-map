@@ -1,0 +1,207 @@
+{
+  "id": "jerusalem",
+  "name": "Jerusalem",
+  "country": "Israel",
+  "cityType": 2,
+  "cityTypology": "concentrated_walkable",
+  "coverageRange": [5, 7],
+  "valueMap": {
+    "historic_cultural": ["Old City", "Jewish Quarter", "Ein Karem"],
+    "gastronomic": ["Mahane Yehuda / Nachlaot", "German Colony"],
+    "nature": ["Ein Karem"],
+    "scenic_routes": ["Old City Walls", "Ein Karem"],
+    "local_commerce": ["Mahane Yehuda / Nachlaot"]
+  },
+  "contextualTagsAvailable": ["pilgrimage", "lgbtq"],
+  "districts": [
+    {
+      "id": "old-city",
+      "name": "Old City",
+      "oneLineSummary": "Jerusalem's ancient walled heart — four quarters, endless history, pilgrimage energy.",
+      "description": "The Old City is one of the most historically dense places on earth. Within its Ottoman walls lie the Jewish Quarter, Muslim Quarter, Christian Quarter, and Armenian Quarter, each with its own atmosphere. The narrow alleys of the souk, the Western Wall plaza, the Church of the Holy Sepulchre, and the Temple Mount make every walk a layered experience. Accommodation is sparse and atmospheric — boutique guesthouses, heritage hostels. The pace is unhurried in the early morning and intensely charged during peak pilgrimage hours.",
+      "hotSpot": "The rooftop of the Austrian Hospice at sunrise — views over the golden domes before the crowds arrive.",
+      "watchOut": "Street navigation is genuinely labyrinthine. Download an offline map. Security queues at holy sites can take 45 minutes.",
+      "bookingTip": "Book at least 3 months ahead for Passover, Easter, or Ramadan dates. Jaffa Gate area has the best access.",
+      "valueTypesPresent": ["historic_cultural", "scenic_routes"],
+      "sacredSubTag": true,
+      "scores": {
+        "daytimeLife": 9,
+        "eveningLife": 5,
+        "clubPresence": "none",
+        "proximityToAttractions": 10,
+        "strategicLocation": 9,
+        "pedestrianComfort": 7,
+        "transportConnections": 6,
+        "priceLevel": 5,
+        "authenticity": "touristy",
+        "safety": "soft_crime"
+      },
+      "bestFor": {
+        "Nester": "A base that never lets you forget where you are — history in every stone.",
+        "Restorer": "Quiet mornings in the Armenian Quarter before the pilgrims arrive.",
+        "Cartographer": "The best proximity score in the city — everything historical is at your door.",
+        "Wanderer": "The souks reward slow exploration with unexpected courtyards and craftsmen.",
+        "Atmosphere Chaser": "Unmatched sacred atmosphere — intense, layered, unlike anywhere else.",
+        "Connoisseur": "For those who want the full Jerusalem experience, unfiltered.",
+        "Energizer": "Daytime energy is unmatched; evening is quiet — plan accordingly."
+      }
+    },
+    {
+      "id": "jewish-quarter",
+      "name": "Jewish Quarter",
+      "oneLineSummary": "Reconstructed post-1967, orderly and quiet — proximity to the Wall, upscale and calm.",
+      "description": "The Jewish Quarter was rebuilt after 1967 and has a tidier, more residential feel than the rest of the Old City. Wide-ish streets, well-lit alleys, and a handful of excellent archaeological sites (the Broad Wall, the Cardo) sit alongside upscale accommodation and kosher dining. It's the quietest overnight option inside the walls — families and pilgrims predominate. The Western Wall is a 5-minute walk. Shabbat turns the quarter serene from Friday sundown.",
+      "hotSpot": "Hurvah Square at dusk, when the synagogue dome glows and the plaza empties.",
+      "watchOut": "Extremely limited Saturday transport and most restaurants closed on Shabbat.",
+      "bookingTip": "Heritage boutique hotels here fill early — book 2 months out minimum.",
+      "valueTypesPresent": ["historic_cultural"],
+      "sacredSubTag": true,
+      "scores": {
+        "daytimeLife": 7,
+        "eveningLife": 4,
+        "clubPresence": "none",
+        "proximityToAttractions": 10,
+        "strategicLocation": 9,
+        "pedestrianComfort": 8,
+        "transportConnections": 5,
+        "priceLevel": 4,
+        "authenticity": "mixed",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "The quietest base inside the walls — come home to calm every evening.",
+        "Restorer": "Shabbat serenity makes this the most restorative pocket of the Old City.",
+        "Cartographer": "Ideal access to all four quarters and the Western Wall.",
+        "Wanderer": "Small enough to know every corner within a day, deep enough to keep revealing itself.",
+        "Atmosphere Chaser": "Sacred atmosphere distilled — fewer tourists, more feeling.",
+        "Connoisseur": "Fine Jerusalem stone architecture and quality kosher dining.",
+        "Energizer": "Better used as a base for day trips — evenings are quiet here."
+      }
+    },
+    {
+      "id": "mamilla-city-center",
+      "name": "Mamilla / City Center",
+      "oneLineSummary": "Modern pedestrian promenade linking Jaffa Gate to West Jerusalem's commercial core.",
+      "description": "Mamilla is Jerusalem's upscale open-air shopping and dining strip, flowing from Jaffa Gate into the modern city. It sits right at the seam between Old and New Jerusalem, making it the most strategically convenient base in the city. The accommodation here tends toward the luxury end. Evenings have a pleasant buzz without being loud. Ben Yehuda pedestrian street and the Machane Yehuda market are a 15-minute walk.",
+      "hotSpot": "Evening dinner at one of the Mamilla promenade restaurants with the Old City walls lit up behind you.",
+      "watchOut": "Prices are high for everything — Mamilla is Jerusalem's most commercial strip.",
+      "bookingTip": "The Mamilla Hotel is the area landmark but sells out fast. Search for boutique options on Agripas Street.",
+      "valueTypesPresent": ["gastronomic", "local_commerce"],
+      "scores": {
+        "daytimeLife": 8,
+        "eveningLife": 7,
+        "clubPresence": "some",
+        "proximityToAttractions": 8,
+        "strategicLocation": 9,
+        "pedestrianComfort": 9,
+        "transportConnections": 9,
+        "priceLevel": 3,
+        "authenticity": "mixed",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "A comfortable, safe home base with everything within walking distance.",
+        "Restorer": "Pleasant evenings on the promenade — not too loud, not too empty.",
+        "Cartographer": "The most strategically placed neighborhood in the city — Old City west, New City east.",
+        "Wanderer": "A convenient launchpad — use it to reach everywhere else on foot.",
+        "Atmosphere Chaser": "Evening atmosphere is genuine without the tourist saturation of the Old City.",
+        "Connoisseur": "Quality restaurants, wine bars, and the best hotels in the city.",
+        "Energizer": "Good evening scene, centrally placed for a full day of activity."
+      }
+    },
+    {
+      "id": "nachlaot-mahane-yehuda",
+      "name": "Nachlaot / Mahane Yehuda",
+      "oneLineSummary": "Jerusalem's most alive neighborhood — a legendary market by day, bar scene by night.",
+      "description": "Nachlaot is a maze of small alleys and charming courtyards just west of the Mahane Yehuda market. The market itself is Jerusalem's culinary and social heart — spice mountains, fresh bread, hummus counters, and then after dark it transforms into a strip of bars and live music. The neighborhood draws a young local crowd and independent travelers who want something real. It's the most authentic accommodation pick in the city for food-focused visitors. Airbnb is the dominant accommodation type here.",
+      "hotSpot": "Mahane Yehuda on a Thursday evening — stalls half-packed up, bars opening, locals spilling onto the street.",
+      "watchOut": "Noisy on market days and Thursday nights — light sleepers should bring earplugs.",
+      "bookingTip": "Airbnb is the best option. Look for apartments in Nachlaot proper, just south of the market.",
+      "valueTypesPresent": ["gastronomic", "local_commerce"],
+      "scores": {
+        "daytimeLife": 9,
+        "eveningLife": 8,
+        "clubPresence": "some",
+        "proximityToAttractions": 7,
+        "strategicLocation": 8,
+        "pedestrianComfort": 7,
+        "transportConnections": 8,
+        "priceLevel": 7,
+        "authenticity": "local",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "Wake up to market sounds and coffee — this is as rooted as Jerusalem gets.",
+        "Restorer": "The quieter Nachlaot alleys offer calm within steps of the market energy.",
+        "Cartographer": "Good central access with an authentic local flavor — best of both worlds.",
+        "Wanderer": "Lose yourself in Nachlaot's maze of alleys, courtyards, and unexpected cafés.",
+        "Atmosphere Chaser": "The Thursday night market transformation is one of Jerusalem's great atmospheres.",
+        "Connoisseur": "Jerusalem's food capital — the best hummus, shakshuka, and wine bar scene.",
+        "Energizer": "The most energetic neighborhood in the city for evenings and social life."
+      }
+    },
+    {
+      "id": "german-colony",
+      "name": "German Colony / Emek Refaim",
+      "oneLineSummary": "Leafy residential village feel, café-lined main street, the calmest base in Jerusalem.",
+      "description": "The German Colony was founded by the German Templers in the 19th century and retains a distinctive character — stone houses, wide tree-lined streets, and an easy, residential pace. Emek Refaim is the main street: excellent cafés, bookshops, a good wine bar or two. It's the choice for travelers who want Jerusalem's history by day and a genuinely local neighborhood by night. The First Station arts and dining complex is a 10-minute walk.",
+      "hotSpot": "Emek Refaim on a Saturday morning — families, coffee, newspapers, the best people-watching in the city.",
+      "watchOut": "Farthest from the Old City of the central picks — budget 20–25 minutes on the Light Rail.",
+      "bookingTip": "Boutique hotels and B&Bs on the side streets off Emek Refaim. Fewer options than the center — book early.",
+      "valueTypesPresent": ["gastronomic"],
+      "scores": {
+        "daytimeLife": 7,
+        "eveningLife": 6,
+        "clubPresence": "none",
+        "proximityToAttractions": 6,
+        "strategicLocation": 7,
+        "pedestrianComfort": 9,
+        "transportConnections": 7,
+        "priceLevel": 6,
+        "authenticity": "local",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "The most genuinely residential feel in the city — a real neighborhood, not a tourist zone.",
+        "Restorer": "Calm, leafy, unhurried — perfect for someone who needs a quiet retreat to return to.",
+        "Cartographer": "A pleasant base with Light Rail access to everywhere, though slightly slower.",
+        "Wanderer": "Slow mornings on Emek Refaim, discovering side streets and resident rhythms.",
+        "Atmosphere Chaser": "Saturday morning atmosphere rivals any market in the city.",
+        "Connoisseur": "The best coffee scene in Jerusalem, excellent restaurants, understated quality.",
+        "Energizer": "Low evening energy — treat it as a comfortable home base, not a scene."
+      }
+    },
+    {
+      "id": "ein-karem",
+      "name": "Ein Karem",
+      "oneLineSummary": "A village swallowed by the city — artists, terraces, pilgrimage churches, stone and silence.",
+      "description": "Ein Karem sits in a valley on Jerusalem's western edge and feels remarkably removed from the city. Churches mark the birthplace of John the Baptist, artists fill the stone houses, and the terraced hillsides and gardens create a pastoral pocket unlike anything else in Jerusalem. It's for travelers who want a genuinely restorative base — quiet mornings, small galleries, a handful of restaurants with terrace views. Access to the center is by bus (30 minutes) or taxi.",
+      "hotSpot": "Spring of the Virgin Mary courtyard in the early morning — bells, bougainvillea, no one around.",
+      "watchOut": "No Light Rail access. Taxis and Buses only. Not suited to late nights in the center.",
+      "bookingTip": "A few B&Bs and small guesthouses — book directly. The Convent guesthouses offer remarkable authenticity.",
+      "valueTypesPresent": ["nature", "scenic_routes", "historic_cultural"],
+      "sacredSubTag": true,
+      "scores": {
+        "daytimeLife": 6,
+        "eveningLife": 4,
+        "clubPresence": "none",
+        "proximityToAttractions": 4,
+        "strategicLocation": 4,
+        "pedestrianComfort": 7,
+        "transportConnections": 4,
+        "priceLevel": 8,
+        "authenticity": "local",
+        "safety": "safe"
+      },
+      "bestFor": {
+        "Nester": "The most deeply rooted feeling in Jerusalem — a real village within the city.",
+        "Restorer": "The only genuinely restorative base in Jerusalem — silence, nature, and beauty.",
+        "Cartographer": "Worth visiting as a day trip; less suited as a primary base given the distance.",
+        "Wanderer": "Every alley reveals a new courtyard, church, or local artist's studio.",
+        "Atmosphere Chaser": "Sacred, artistic, pastoral atmosphere — utterly unlike anywhere else in the city.",
+        "Connoisseur": "Excellent terrace restaurants, quality local art, rare peace and quiet.",
+        "Energizer": "Too remote and quiet for this profile — better as a half-day excursion."
+      }
+    }
+  ]
+}

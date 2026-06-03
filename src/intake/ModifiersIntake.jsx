@@ -1,0 +1,106 @@
+import { Box, Typography, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Select, MenuItem, TextField, Divider, FormControlLabel, Switch, Stack } from '@mui/material'
+
+const SPECIAL_OCCASIONS = ['none', 'honeymoon', 'anniversary', 'birthday', 'bleisure', 'other']
+
+export default function ModifiersIntake({ modifiers, contextualTags, availableTags, onModifierChange, onTagChange }) {
+  return (
+    <Box>
+      <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>Final touches</Typography>
+
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>First time in this city?</Typography>
+        <ToggleButtonGroup
+          exclusive
+          value={modifiers.firstTime}
+          onChange={(_, val) => val !== null && onModifierChange({ firstTime: val })}
+        >
+          <ToggleButton value={true}>Yes, first time</ToggleButton>
+          <ToggleButton value={false}>I've been before</ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
+
+      <Box sx={{ mb: 3 }}>
+        <FormControl fullWidth>
+          <InputLabel>Special occasion?</InputLabel>
+          <Select
+            value={modifiers.specialOccasion ?? 'none'}
+            label="Special occasion?"
+            onChange={e => onModifierChange({ specialOccasion: e.target.value })}
+          >
+            {SPECIAL_OCCASIONS.map(o => (
+              <MenuItem key={o} value={o} sx={{ textTransform: 'capitalize' }}>{o}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+
+      <Box sx={{ mb: 4 }}>
+        <TextField
+          fullWidth
+          label="Anything else we should know? (optional)"
+          multiline
+          rows={2}
+          value={modifiers.freeText ?? ''}
+          onChange={e => onModifierChange({ freeText: e.target.value })}
+        />
+      </Box>
+
+      {availableTags?.length > 0 && (
+        <>
+          <Divider sx={{ mb: 3 }} />
+          <Typography variant="h6" fontWeight={600} sx={{ mb: 2 }}>
+            This city has some special angles — do any apply to you?
+          </Typography>
+          <Stack spacing={1}>
+            {availableTags.includes('pilgrimage') && (
+              <Box>
+                <FormControlLabel
+                  label="I'm travelling partly for pilgrimage / faith reasons"
+                  control={
+                    <Switch
+                      checked={contextualTags.pilgrimage ?? false}
+                      onChange={e => onTagChange({ pilgrimage: e.target.checked })}
+                    />
+                  }
+                />
+              </Box>
+            )}
+            {availableTags.includes('fandom') && (
+              <FormControlLabel
+                label="I have pop-culture or fandom destinations on my list"
+                control={
+                  <Switch
+                    checked={contextualTags.fandom ?? false}
+                    onChange={e => onTagChange({ fandom: e.target.checked })}
+                  />
+                }
+              />
+            )}
+            {availableTags.includes('counterculture') && (
+              <FormControlLabel
+                label="I'm interested in counterculture and alternative scenes"
+                control={
+                  <Switch
+                    checked={contextualTags.counterculture ?? false}
+                    onChange={e => onTagChange({ counterculture: e.target.checked })}
+                  />
+                }
+              />
+            )}
+          </Stack>
+          <Box sx={{ mt: 2 }}>
+            <FormControlLabel
+              label="LGBTQ+ scene-seeking"
+              control={
+                <Switch
+                  checked={contextualTags.lgbtq ?? false}
+                  onChange={e => onTagChange({ lgbtq: e.target.checked })}
+                />
+              }
+            />
+          </Box>
+        </>
+      )}
+    </Box>
+  )
+}
