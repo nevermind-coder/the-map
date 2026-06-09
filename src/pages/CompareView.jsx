@@ -1,7 +1,11 @@
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
-import { Container, Typography, Button, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Chip } from '@mui/material'
+import { Container, Typography, Button, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Chip, Divider } from '@mui/material'
 import { getCityById } from '../data/index.js'
+import { useProfile } from '../context/ProfileContext.jsx'
 import { CRITERIA, CRITERIA_LABELS, WEIGHTED_CRITERIA } from '../domain/criteria.js'
+import AiInsight from '../components/AiInsight.jsx'
+import { useStreamText } from '../hooks/useStreamText.js'
+import { streamComparisonAdvice } from '../services/gemini.js'
 
 const TAG_CRITERIA = [CRITERIA.CLUB_PRESENCE, CRITERIA.AUTHENTICITY, CRITERIA.SAFETY]
 const TAG_COLORS = {
@@ -15,11 +19,21 @@ function winnerColor(vals, idx) {
   return vals[idx] === max ? 'primary.light' : 'transparent'
 }
 
+function ComparisonInsight({ profile, districts }) {
+  const districtIds = districts.map(d => d.id).join(',')
+  const { text, loading, error } = useStreamText(
+    () => streamComparisonAdvice(profile, districts),
+    [profile.derived?.persona, districtIds]
+  )
+  return <AiInsight text={text} loading={loading} error={error} label="Gemini — my recommendation" />
+}
+
 export default function CompareView() {
   const { id } = useParams()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const city = getCityById(id)
+  const profile = useProfile()
 
   const districtIds = (searchParams.get('districts') ?? '').split(',').filter(Boolean)
   const districts = districtIds
@@ -100,7 +114,11 @@ export default function CompareView() {
         </Table>
       </TableContainer>
 
-      <Box sx={{ mt: 3, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+      {profile.derived && <ComparisonInsight profile={profile} districts={districts} />}
+
+      <Divider sx={{ my: 3 }} />
+
+      <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
         {districts.map(d => (
           <Button
             key={d.id}

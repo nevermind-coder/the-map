@@ -1,13 +1,24 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Typography, Box, Button, Chip, Divider, Stack, Card, CardContent, Alert } from '@mui/material'
 import CriteriaBar from '../components/CriteriaBar.jsx'
+import AiInsight from '../components/AiInsight.jsx'
 import { getCityById } from '../data/index.js'
 import { useProfile } from '../context/ProfileContext.jsx'
 import { VALUE_TYPE_LABELS } from '../domain/valueTypes.js'
 import { CRITERIA, CRITERIA_LABELS } from '../domain/criteria.js'
+import { useStreamText } from '../hooks/useStreamText.js'
+import { streamDistrictNarrative } from '../services/gemini.js'
 
 const SAFETY_LABEL = { safe: 'Safe area', soft_crime: 'Watch Out — some petty crime reported', hard_crime: 'High-crime area' }
 const SAFETY_SEVERITY = { safe: 'success', soft_crime: 'warning', hard_crime: 'error' }
+
+function DistrictNarrative({ profile, district }) {
+  const { text, loading, error } = useStreamText(
+    () => streamDistrictNarrative(profile, district),
+    [profile.derived?.persona, district.id]
+  )
+  return <AiInsight text={text} loading={loading} error={error} label="Gemini — your experience here" />
+}
 
 export default function DistrictProfile() {
   const { id, districtId } = useParams()
@@ -58,13 +69,15 @@ export default function DistrictProfile() {
       )}
 
       {bestForLine && (
-        <Box sx={{ bgcolor: 'primary.main', borderRadius: 2, p: 2, mb: 3, color: 'white' }}>
+        <Box sx={{ bgcolor: 'primary.main', borderRadius: 2, p: 2, mb: 2, color: 'white' }}>
           <Typography variant="overline" sx={{ opacity: 0.8 }}>Best for {persona}</Typography>
           <Typography variant="body1" fontWeight={500}>{bestForLine}</Typography>
         </Box>
       )}
 
-      <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.8 }}>{district.description}</Typography>
+      {profile.derived && <DistrictNarrative profile={profile} district={district} />}
+
+      <Typography variant="body1" sx={{ mt: 3, mb: 3, lineHeight: 1.8 }}>{district.description}</Typography>
 
       <Divider sx={{ my: 3 }} />
 

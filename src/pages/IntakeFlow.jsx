@@ -68,6 +68,7 @@ export default function IntakeFlow() {
             availableTags={city.contextualTagsAvailable}
             onModifierChange={updateModifiers}
             onTagChange={updateTags}
+            profile={profile}
           />
         )}
       </Box>

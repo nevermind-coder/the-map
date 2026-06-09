@@ -2,9 +2,28 @@ import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Typography, Box, Button, Divider, Chip, Alert, Stack } from '@mui/material'
 import DistrictCard from '../components/DistrictCard.jsx'
+import AiInsight from '../components/AiInsight.jsx'
 import { useProfile } from '../context/ProfileContext.jsx'
 import { getCityById } from '../data/index.js'
 import { PERSONA_DESCRIPTIONS } from '../engine/personaProjection.js'
+import { useStreamText } from '../hooks/useStreamText.js'
+import { streamPersonaInsight, streamDistrictInsight } from '../services/gemini.js'
+
+function PersonaInsight({ profile }) {
+  const { text, loading, error } = useStreamText(
+    () => streamPersonaInsight(profile),
+    [profile.derived?.persona, profile.modifiers?.freeText]
+  )
+  return <AiInsight text={text} loading={loading} error={error} label="Gemini — your travel style" />
+}
+
+function DistrictInsight({ profile, district }) {
+  const { text, loading, error } = useStreamText(
+    () => streamDistrictInsight(profile, district),
+    [profile.derived?.persona, district.id]
+  )
+  return <AiInsight text={text} loading={loading} error={error} label="Why this works for you" />
+}
 
 export default function RankedResults() {
   const { id } = useParams()
@@ -61,10 +80,12 @@ export default function RankedResults() {
         />
       </Box>
 
+      <PersonaInsight profile={profile} />
+
       {compareList.length >= 2 && (
         <Alert
           severity="info"
-          sx={{ mb: 2 }}
+          sx={{ mt: 2 }}
           action={
             <Button color="inherit" size="small" onClick={handleCompare}>
               Compare {compareList.length}
@@ -75,24 +96,26 @@ export default function RankedResults() {
         </Alert>
       )}
 
-      <Typography variant="h5" fontWeight={700} sx={{ mb: 2 }}>Top picks for you</Typography>
+      <Typography variant="h5" fontWeight={700} sx={{ mt: 3, mb: 2 }}>Top picks for you</Typography>
 
       {top3.map((ranked, i) => (
-        <DistrictCard
-          key={ranked.district.id}
-          ranked={ranked}
-          rank={i + 1}
-          cityId={id}
-          persona={persona}
-          showCheckbox
-          checked={compareList.includes(ranked.district.id)}
-          onToggleCheck={handleToggleCompare}
-        />
+        <Box key={ranked.district.id}>
+          <DistrictCard
+            ranked={ranked}
+            rank={i + 1}
+            cityId={id}
+            persona={persona}
+            showCheckbox
+            checked={compareList.includes(ranked.district.id)}
+            onToggleCheck={handleToggleCompare}
+          />
+          <DistrictInsight profile={profile} district={ranked.district} />
+        </Box>
       ))}
 
       {rest.length > 0 && (
         <>
-          <Button variant="text" onClick={() => setShowAll(v => !v)} sx={{ mb: 2 }}>
+          <Button variant="text" onClick={() => setShowAll(v => !v)} sx={{ mb: 2, mt: 1 }}>
             {showAll ? 'Show less' : `See all ${rest.length} more →`}
           </Button>
           {showAll && rest.map((ranked, i) => (

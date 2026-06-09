@@ -1,8 +1,25 @@
-import { Box, Typography, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Select, MenuItem, TextField, Divider, FormControlLabel, Switch, Stack } from '@mui/material'
+import { useState, useEffect } from 'react'
+import { Box, Typography, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Select, MenuItem, TextField, Divider, FormControlLabel, Switch, Stack, Chip } from '@mui/material'
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
+import { analyzeIntentText } from '../services/gemini.js'
 
 const SPECIAL_OCCASIONS = ['none', 'honeymoon', 'anniversary', 'birthday', 'bleisure', 'other']
 
-export default function ModifiersIntake({ modifiers, contextualTags, availableTags, onModifierChange, onTagChange }) {
+export default function ModifiersIntake({ modifiers, contextualTags, availableTags, onModifierChange, onTagChange, profile }) {
+  const [detectedTags, setDetectedTags] = useState([])
+
+  useEffect(() => {
+    const text = modifiers.freeText?.trim()
+    if (!text) { setDetectedTags([]); return }
+
+    const timer = setTimeout(async () => {
+      const tags = await analyzeIntentText(text, profile ?? {})
+      setDetectedTags(tags)
+    }, 800)
+
+    return () => clearTimeout(timer)
+  }, [modifiers.freeText, profile])
+
   return (
     <Box>
       <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>Final touches</Typography>
@@ -34,7 +51,7 @@ export default function ModifiersIntake({ modifiers, contextualTags, availableTa
         </FormControl>
       </Box>
 
-      <Box sx={{ mb: 4 }}>
+      <Box sx={{ mb: detectedTags.length ? 1.5 : 4 }}>
         <TextField
           fullWidth
           label="Anything else we should know? (optional)"
@@ -44,6 +61,22 @@ export default function ModifiersIntake({ modifiers, contextualTags, availableTa
           onChange={e => onModifierChange({ freeText: e.target.value })}
         />
       </Box>
+
+      {detectedTags.length > 0 && (
+        <Box sx={{ mb: 3.5, px: 1.5, py: 1.25, bgcolor: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 1 }}>
+            <AutoAwesomeIcon sx={{ fontSize: 13, color: '#6366f1' }} />
+            <Typography variant="overline" sx={{ fontSize: '0.62rem', letterSpacing: 1, color: '#6366f1', lineHeight: 1 }}>
+              Gemini detected
+            </Typography>
+          </Box>
+          <Stack direction="row" spacing={1} flexWrap="wrap">
+            {detectedTags.map(tag => (
+              <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: 'rgba(99,102,241,0.4)', color: 'text.secondary', fontSize: '0.75rem' }} />
+            ))}
+          </Stack>
+        </Box>
+      )}
 
       {availableTags?.length > 0 && (
         <>

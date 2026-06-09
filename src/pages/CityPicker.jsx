@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container, Typography, Card, CardActionArea, CardContent, Box, TextField, Chip } from '@mui/material'
-import { CITIES } from '../data/index.js'
+import { Container, Typography, Card, CardActionArea, CardContent, Box, TextField, Chip, Button, CircularProgress, Alert } from '@mui/material'
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
+import { getAllCities, cacheCity } from '../data/index.js'
+import { generateCityData } from '../services/gemini.js'
 
 const TYPE_LABELS = { 1: 'Compact', 2: 'Extended', 3: 'Polycentric', 4: 'Extreme Polycentric' }
 const TYPOLOGY_LABELS = {
@@ -12,14 +14,39 @@ const TYPOLOGY_LABELS = {
 
 export default function CityPicker() {
   const [query, setQuery] = useState('')
+  const [generating, setGenerating] = useState(false)
+  const [error, setError] = useState(null)
   const navigate = useNavigate()
 
-  const filtered = CITIES.filter(c =>
-    c.name.toLowerCase().includes(query.toLowerCase()) ||
-    c.country.toLowerCase().includes(query.toLowerCase())
+  const trimmed = query.trim()
+  const allCities = getAllCities()
+  const filtered = allCities.filter(c =>
+    c.name.toLowerCase().includes(trimmed.toLowerCase()) ||
+    c.country.toLowerCase().includes(trimmed.toLowerCase())
   )
 
+  const exactMatch = allCities.find(c => c.name.toLowerCase() === trimmed.toLowerCase())
+  const showAiButton = trimmed.length >= 2 && !exactMatch
+
   const handleSelect = (cityId) => navigate(`/city/${cityId}`)
+
+  const handleGenerate = async () => {
+    setGenerating(true)
+    setError(null)
+    try {
+      const city = await generateCityData(trimmed)
+      cacheCity(city)
+      navigate(`/city/${city.id}`)
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setGenerating(false)
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && showAiButton && !generating) handleGenerate()
+  }
 
   return (
     <Container maxWidth="sm" sx={{ py: 6 }}>
@@ -30,11 +57,37 @@ export default function CityPicker() {
 
       <TextField
         fullWidth
-        placeholder="Search cities…"
+        placeholder="Search or type any city…"
         value={query}
-        onChange={e => setQuery(e.target.value)}
-        sx={{ mb: 3 }}
+        onChange={e => { setQuery(e.target.value); setError(null) }}
+        onKeyDown={handleKeyDown}
+        sx={{ mb: 2 }}
+        disabled={generating}
       />
+
+      {showAiButton && (
+        <Button
+          fullWidth
+          variant="outlined"
+          onClick={handleGenerate}
+          disabled={generating}
+          startIcon={generating ? <CircularProgress size={16} /> : <AutoAwesomeIcon />}
+          sx={{
+            mb: 3, py: 1.5,
+            borderColor: 'rgba(99,102,241,0.4)',
+            color: '#6366f1',
+            '&:hover': { borderColor: '#6366f1', bgcolor: 'rgba(99,102,241,0.05)' },
+          }}
+        >
+          {generating ? `Mapping ${trimmed} with Gemini…` : `Explore "${trimmed}" with Gemini`}
+        </Button>
+      )}
+
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }} onClose={() => setError(null)}>
+          {error}
+        </Alert>
+      )}
 
       {filtered.map(city => (
         <Card key={city.id} variant="outlined" sx={{ mb: 2 }}>
@@ -58,7 +111,7 @@ export default function CityPicker() {
         </Card>
       ))}
 
-      {filtered.length === 0 && (
+      {filtered.length === 0 && !showAiButton && (
         <Typography color="text.secondary" textAlign="center" sx={{ mt: 4 }}>
           No cities found for "{query}"
         </Typography>
