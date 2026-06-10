@@ -12,11 +12,13 @@
     "scenic_routes": ["Old City Walls", "Ein Karem"],
     "local_commerce": ["Mahane Yehuda / Nachlaot"]
   },
-  "contextualTagsAvailable": ["pilgrimage", "lgbtq"],
+  "coordinates": { "lat": 31.7683, "lon": 35.2137 },
+  "contextualTagsAvailable": ["pilgrimage", "fandom", "lgbtq"],
   "districts": [
     {
       "id": "old-city",
       "name": "Old City",
+      "coordinates": { "lat": 31.7767, "lon": 35.2297 },
       "oneLineSummary": "Jerusalem's ancient walled heart — four quarters, endless history, pilgrimage energy.",
       "description": "The Old City is one of the most historically dense places on earth. Within its Ottoman walls lie the Jewish Quarter, Muslim Quarter, Christian Quarter, and Armenian Quarter, each with its own atmosphere. The narrow alleys of the souk, the Western Wall plaza, the Church of the Holy Sepulchre, and the Temple Mount make every walk a layered experience. Accommodation is sparse and atmospheric — boutique guesthouses, heritage hostels. The pace is unhurried in the early morning and intensely charged during peak pilgrimage hours.",
       "hotSpot": "The rooftop of the Austrian Hospice at sunrise — views over the golden domes before the crowds arrive.",
@@ -49,6 +51,7 @@
     {
       "id": "jewish-quarter",
       "name": "Jewish Quarter",
+      "coordinates": { "lat": 31.7752, "lon": 35.2296 },
       "oneLineSummary": "Reconstructed post-1967, orderly and quiet — proximity to the Wall, upscale and calm.",
       "description": "The Jewish Quarter was rebuilt after 1967 and has a tidier, more residential feel than the rest of the Old City. Wide-ish streets, well-lit alleys, and a handful of excellent archaeological sites (the Broad Wall, the Cardo) sit alongside upscale accommodation and kosher dining. It's the quietest overnight option inside the walls — families and pilgrims predominate. The Western Wall is a 5-minute walk. Shabbat turns the quarter serene from Friday sundown.",
       "hotSpot": "Hurvah Square at dusk, when the synagogue dome glows and the plaza empties.",
@@ -81,6 +84,7 @@
     {
       "id": "mamilla-city-center",
       "name": "Mamilla / City Center",
+      "coordinates": { "lat": 31.7796, "lon": 35.2218 },
       "oneLineSummary": "Modern pedestrian promenade linking Jaffa Gate to West Jerusalem's commercial core.",
       "description": "Mamilla is Jerusalem's upscale open-air shopping and dining strip, flowing from Jaffa Gate into the modern city. It sits right at the seam between Old and New Jerusalem, making it the most strategically convenient base in the city. The accommodation here tends toward the luxury end. Evenings have a pleasant buzz without being loud. Ben Yehuda pedestrian street and the Machane Yehuda market are a 15-minute walk.",
       "hotSpot": "Evening dinner at one of the Mamilla promenade restaurants with the Old City walls lit up behind you.",
@@ -112,6 +116,7 @@
     {
       "id": "nachlaot-mahane-yehuda",
       "name": "Nachlaot / Mahane Yehuda",
+      "coordinates": { "lat": 31.7840, "lon": 35.2131 },
       "oneLineSummary": "Jerusalem's most alive neighborhood — a legendary market by day, bar scene by night.",
       "description": "Nachlaot is a maze of small alleys and charming courtyards just west of the Mahane Yehuda market. The market itself is Jerusalem's culinary and social heart — spice mountains, fresh bread, hummus counters, and then after dark it transforms into a strip of bars and live music. The neighborhood draws a young local crowd and independent travelers who want something real. It's the most authentic accommodation pick in the city for food-focused visitors. Airbnb is the dominant accommodation type here.",
       "hotSpot": "Mahane Yehuda on a Thursday evening — stalls half-packed up, bars opening, locals spilling onto the street.",
@@ -143,6 +148,7 @@
     {
       "id": "german-colony",
       "name": "German Colony / Emek Refaim",
+      "coordinates": { "lat": 31.7620, "lon": 35.2143 },
       "oneLineSummary": "Leafy residential village feel, café-lined main street, the calmest base in Jerusalem.",
       "description": "The German Colony was founded by the German Templers in the 19th century and retains a distinctive character — stone houses, wide tree-lined streets, and an easy, residential pace. Emek Refaim is the main street: excellent cafés, bookshops, a good wine bar or two. It's the choice for travelers who want Jerusalem's history by day and a genuinely local neighborhood by night. The First Station arts and dining complex is a 10-minute walk.",
       "hotSpot": "Emek Refaim on a Saturday morning — families, coffee, newspapers, the best people-watching in the city.",
@@ -174,6 +180,7 @@
     {
       "id": "ein-karem",
       "name": "Ein Karem",
+      "coordinates": { "lat": 31.7609, "lon": 35.1625 },
       "oneLineSummary": "A village swallowed by the city — artists, terraces, pilgrimage churches, stone and silence.",
       "description": "Ein Karem sits in a valley on Jerusalem's western edge and feels remarkably removed from the city. Churches mark the birthplace of John the Baptist, artists fill the stone houses, and the terraced hillsides and gardens create a pastoral pocket unlike anything else in Jerusalem. It's for travelers who want a genuinely restorative base — quiet mornings, small galleries, a handful of restaurants with terrace views. Access to the center is by bus (30 minutes) or taxi.",
       "hotSpot": "Spring of the Virgin Mary courtyard in the early morning — bells, bougainvillea, no one around.",

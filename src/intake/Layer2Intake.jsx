@@ -2,7 +2,7 @@ import { Box, Typography, Stack, Chip, Slider, FormGroup, FormControlLabel, Chec
 
 const PARTY_OPTIONS = ['solo', 'couple', 'friends', 'family', 'multigen']
 const ACCESSIBILITY_OPTIONS = ['wheelchair', 'limited mobility', 'stroller', 'visual impairment']
-const DIETARY_OPTIONS = ['none', 'vegetarian', 'vegan', 'kosher', 'halal']
+const DIETARY_OPTIONS = ['vegetarian', 'vegan', 'kosher', 'halal']
 const WALKING_MARKS = [
   { value: 1, label: 'Very low' },
   { value: 2, label: 'Low' },
@@ -106,7 +106,7 @@ export default function Layer2Intake({ answers, onChange }) {
       </Box>
 
       <Box sx={{ mb: 3 }}>
-        <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>Dietary needs</Typography>
+        <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>Dietary needs (if relevant)</Typography>
         <ChipSelect
           options={DIETARY_OPTIONS}
           value={answers.dietary}

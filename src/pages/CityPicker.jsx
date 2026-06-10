@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container, Typography, Card, CardActionArea, CardContent, Box, TextField, Chip, Button, CircularProgress, Alert } from '@mui/material'
+import { Container, Typography, Card, CardActionArea, CardContent, Box, TextField, Chip, Button, CircularProgress, Alert, Autocomplete } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import { getAllCities, cacheCity } from '../data/index.js'
 import { generateCityData } from '../services/ai.js'
@@ -16,6 +16,8 @@ export default function CityPicker() {
   const [query, setQuery] = useState('')
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState(null)
+  const [geoSuggestions, setGeoSuggestions] = useState([])
+  const abortRef = useRef(null)
   const navigate = useNavigate()
 
   const trimmed = query.trim()
@@ -27,6 +29,53 @@ export default function CityPicker() {
 
   const exactMatch = allCities.find(c => c.name.toLowerCase() === trimmed.toLowerCase())
   const showAiButton = trimmed.length >= 2 && !exactMatch
+
+  useEffect(() => {
+    if (trimmed.length < 1) { setGeoSuggestions([]); return }
+
+    const timer = setTimeout(async () => {
+      if (abortRef.current) abortRef.current.abort()
+      abortRef.current = new AbortController()
+      const signal = abortRef.current.signal
+      try {
+        const existing = new Set(allCities.map(c => c.name.toLowerCase()))
+
+        const [cityRes, countryRes] = await Promise.allSettled([
+          fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(trimmed)}&count=40&language=en&format=json`,
+            { signal }
+          ),
+          fetch(`/api/country-cities?q=${encodeURIComponent(trimmed)}`, { signal }),
+        ])
+
+        const suggestions = []
+
+        if (cityRes.status === 'fulfilled' && cityRes.value.ok) {
+          const data = await cityRes.value.json()
+          const cities = (data.results ?? [])
+            .filter(r => !existing.has(r.name.toLowerCase()))
+            .sort((a, b) => (b.population ?? 0) - (a.population ?? 0))
+            .slice(0, 10)
+            .map(r => ({ id: `ext:${r.id}`, name: r.name, country: r.country ?? '', isExternal: true, type: 'city' }))
+          suggestions.push(...cities)
+        }
+
+        if (countryRes.status === 'fulfilled' && countryRes.value.ok) {
+          const countryCities = await countryRes.value.json()
+          const alreadyInList = new Set(suggestions.map(s => s.name.toLowerCase()))
+          const extras = (countryCities ?? [])
+            .filter(c => !existing.has(c.name.toLowerCase()) && !alreadyInList.has(c.name.toLowerCase()))
+          suggestions.push(...extras)
+        }
+
+        setGeoSuggestions(suggestions)
+      } catch (e) {
+        if (e.name !== 'AbortError') setGeoSuggestions([])
+      }
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [trimmed])
 
   const handleSelect = (cityId) => navigate(`/city/${cityId}`)
 
@@ -55,14 +104,50 @@ export default function CityPicker() {
         Find your neighborhood
       </Typography>
 
-      <TextField
-        fullWidth
-        placeholder="Search or type any city…"
-        value={query}
-        onChange={e => { setQuery(e.target.value); setError(null) }}
-        onKeyDown={handleKeyDown}
+      <Autocomplete
+        freeSolo
+        options={[...filtered, ...geoSuggestions]}
+        getOptionLabel={option => typeof option === 'string' ? option : option.name}
+        filterOptions={x => x}
+        inputValue={query}
+        onInputChange={(_, value, reason) => {
+          if (reason !== 'reset') { setQuery(value); setError(null) }
+        }}
+        onChange={(_, value) => {
+          if (!value || typeof value === 'string') return
+          if (value.isExternal) {
+            setQuery(value.name)
+          } else {
+            handleSelect(value.id)
+          }
+        }}
+        groupBy={option => {
+          if (!option.isExternal) return 'Saved cities'
+          if (option.type === 'country') return `Cities in ${option.country}`
+          return 'Search results'
+        }}
+        renderOption={(props, option) => (
+          <li {...props} key={option.id}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+              <Box>
+                <Typography variant="body1">{option.name}</Typography>
+                <Typography variant="caption" color="text.secondary">{option.country}</Typography>
+              </Box>
+              {option.isExternal && (
+                <AutoAwesomeIcon sx={{ fontSize: 14, color: '#6366f1', ml: 1, flexShrink: 0 }} />
+              )}
+            </Box>
+          </li>
+        )}
+        renderInput={params => (
+          <TextField
+            {...params}
+            placeholder="Search or type any city…"
+            onKeyDown={handleKeyDown}
+            disabled={generating}
+          />
+        )}
         sx={{ mb: 2 }}
-        disabled={generating}
       />
 
       {showAiButton && (

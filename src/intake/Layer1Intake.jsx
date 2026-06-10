@@ -1,4 +1,4 @@
-import { Box, Typography, Divider, Chip, Stack, Alert } from '@mui/material'
+import { Box, Typography, Divider, Chip, Stack, Alert, Tooltip } from '@mui/material'
 import ScenarioCard from '../components/ScenarioCard.jsx'
 import { Q6_OPTIONS } from '../domain/valueTypes.js'
 
@@ -144,15 +144,16 @@ export default function Layer1Intake({ answers, onChange }) {
           const rankIdx = q6Ranked.indexOf(opt.id)
           const ranked = rankIdx >= 0
           return (
-            <Chip
-              key={opt.id}
-              label={`${opt.emoji} ${opt.label}${ranked ? ` (${rankIdx + 1})` : ''}`}
-              clickable
-              color={ranked ? 'primary' : 'default'}
-              variant={ranked ? 'filled' : 'outlined'}
-              onClick={() => handleQ6Toggle(opt.id)}
-              sx={{ mb: 1 }}
-            />
+            <Tooltip key={opt.id} title={opt.description} enterDelay={1000} enterNextDelay={1000} arrow>
+              <Chip
+                label={`${opt.emoji} ${opt.label}${ranked ? ` (${rankIdx + 1})` : ''}`}
+                clickable
+                color={ranked ? 'primary' : 'default'}
+                variant={ranked ? 'filled' : 'outlined'}
+                onClick={() => handleQ6Toggle(opt.id)}
+                sx={{ mb: 1 }}
+              />
+            </Tooltip>
           )
         })}
       </Stack>

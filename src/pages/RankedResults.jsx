@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Typography, Box, Button, Divider, Chip, Alert, Stack } from '@mui/material'
 import DistrictCard from '../components/DistrictCard.jsx'
@@ -25,6 +25,23 @@ function DistrictInsight({ profile, district }) {
   return <AiInsight text={text} loading={loading} error={error} label="Why this works for you" />
 }
 
+function CollapsibleDistrictInsight({ profile, district }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <Box sx={{ mb: 1 }}>
+      <Button
+        size="small"
+        variant="text"
+        onClick={() => setOpen(v => !v)}
+        sx={{ color: 'text.secondary', fontSize: '0.78rem', textTransform: 'none', px: 0.5 }}
+      >
+        Why this works for you {open ? '▲' : '▼'}
+      </Button>
+      {open && <DistrictInsight profile={profile} district={district} />}
+    </Box>
+  )
+}
+
 export default function RankedResults() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -33,6 +50,8 @@ export default function RankedResults() {
 
   const [showAll, setShowAll] = useState(false)
   const [compareList, setCompareList] = useState([])
+
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   if (!city || !profile.derived) {
     return (
@@ -45,7 +64,7 @@ export default function RankedResults() {
     )
   }
 
-  const { rankedDistricts, persona, cell } = profile.derived
+  const { rankedDistricts, persona } = profile.derived
   const qualified = rankedDistricts.filter(r => !r.hardDisqualified)
   const disqualified = rankedDistricts.filter(r => r.hardDisqualified)
   const top3 = qualified.slice(0, 3)
@@ -67,34 +86,15 @@ export default function RankedResults() {
         ← {city.name}
       </Button>
 
-      <Box sx={{ mb: 3, p: 3, bgcolor: 'primary.main', borderRadius: 3, color: 'white' }}>
-        <Typography variant="overline" sx={{ opacity: 0.8 }}>Your traveler profile</Typography>
-        <Typography variant="h4" fontWeight={700}>{persona}</Typography>
-        <Typography variant="body2" sx={{ mt: 0.5, opacity: 0.9 }}>
+      <Box sx={{ mb: 3, p: 3, bgcolor: 'rgba(25, 118, 210, 0.07)', borderRadius: 3, border: '1px solid rgba(25, 118, 210, 0.18)' }}>
+        <Typography variant="overline" color="text.secondary">Your traveler profile</Typography>
+        <Typography variant="h4" fontWeight={700} color="primary" sx={{ opacity: 0.65 }}>{persona}</Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
           {PERSONA_DESCRIPTIONS[persona]}
         </Typography>
-        <Chip
-          label={`Cell: ${cell}`}
-          size="small"
-          sx={{ mt: 1.5, bgcolor: 'rgba(255,255,255,0.2)', color: 'white' }}
-        />
       </Box>
 
       <PersonaInsight profile={profile} />
-
-      {compareList.length >= 2 && (
-        <Alert
-          severity="info"
-          sx={{ mt: 2 }}
-          action={
-            <Button color="inherit" size="small" onClick={handleCompare}>
-              Compare {compareList.length}
-            </Button>
-          }
-        >
-          {compareList.length} neighborhood{compareList.length > 1 ? 's' : ''} selected for comparison
-        </Alert>
-      )}
 
       <Typography variant="h5" fontWeight={700} sx={{ mt: 3, mb: 2 }}>Top picks for you</Typography>
 
@@ -109,7 +109,7 @@ export default function RankedResults() {
             checked={compareList.includes(ranked.district.id)}
             onToggleCheck={handleToggleCompare}
           />
-          <DistrictInsight profile={profile} district={ranked.district} />
+          <CollapsibleDistrictInsight profile={profile} district={ranked.district} />
         </Box>
       ))}
 
@@ -131,6 +131,20 @@ export default function RankedResults() {
             />
           ))}
         </>
+      )}
+
+      {compareList.length >= 2 && (
+        <Alert
+          severity="info"
+          sx={{ mt: 2 }}
+          action={
+            <Button color="inherit" size="small" onClick={handleCompare}>
+              Compare {compareList.length}
+            </Button>
+          }
+        >
+          {compareList.length} neighborhood{compareList.length > 1 ? 's' : ''} selected for comparison
+        </Alert>
       )}
 
       {disqualified.length > 0 && (

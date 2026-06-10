@@ -32,11 +32,11 @@ export const Q6_VALUE_TYPE_MAP = {
 }
 
 export const Q6_OPTIONS = [
-  { id: 'history', label: 'History & culture', emoji: '🏛' },
-  { id: 'food', label: 'Food', emoji: '🍽' },
-  { id: 'beach', label: 'Beach', emoji: '🏖' },
-  { id: 'nightlife', label: 'Nightlife', emoji: '🎭' },
-  { id: 'markets', label: 'Local markets', emoji: '🛍' },
-  { id: 'nature', label: 'Nature', emoji: '🌿' },
-  { id: 'views', label: 'Views', emoji: '🏔' },
+  { id: 'history', label: 'History & culture', emoji: '🏛', description: 'Historic sites, monuments, UNESCO heritage areas, museums, and architectural landmarks' },
+  { id: 'food', label: 'Food', emoji: '🍽', description: 'Local restaurants, food markets, street food scenes, and culinary cultural experiences' },
+  { id: 'beach', label: 'Beach', emoji: '🏖', description: 'Coastal access, beaches, waterfront promenades, and seaside attractions' },
+  { id: 'nightlife', label: 'Nightlife', emoji: '🎭', description: 'Bars, clubs, live music venues, and late-night entertainment scenes' },
+  { id: 'markets', label: 'Local markets', emoji: '🛍', description: 'Street markets, bazaars, independent shops, and local artisan goods' },
+  { id: 'nature', label: 'Nature', emoji: '🌿', description: 'Parks, green spaces, forests, hiking trails, and natural landscapes' },
+  { id: 'views', label: 'Scenic & Historic Routes', emoji: '🏔', description: 'Scenic promenades, panoramic viewpoints, historic walking corridors, and iconic city routes' },
 ]

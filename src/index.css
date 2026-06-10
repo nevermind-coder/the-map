@@ -54,6 +54,22 @@ body {
   margin: 0;
 }
 
+/* Leaflet neighborhood label tooltips */
+.map-nbhd-label {
+  background: rgba(255, 255, 255, 0.93) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.22) !important;
+  padding: 2px 7px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  color: #1a1a2e !important;
+  white-space: nowrap !important;
+}
+.map-nbhd-label::before {
+  display: none !important;
+}
+
 #root {
   width: 1126px;
   max-width: 100%;

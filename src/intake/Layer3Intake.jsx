@@ -1,6 +1,18 @@
 import { Box, Typography, Slider, Stack, Chip, TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
 const CURRENCIES = ['USD', 'EUR', 'GBP', 'ILS', 'JPY', 'AUD']
+const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£', ILS: '₪', JPY: '¥', AUD: 'A$' }
+
+function getBudgetMarks(currency) {
+  const sym = CURRENCY_SYMBOLS[currency] ?? currency
+  return [
+    { value: 0, label: `${sym}0` },
+    { value: 100, label: `${sym}100` },
+    { value: 200, label: `${sym}200` },
+    { value: 300, label: `${sym}300` },
+    { value: 500, label: `${sym}500+` },
+  ]
+}
 
 const DEALBREAKER_OPTIONS = [
   'Noisy at night',
@@ -11,15 +23,9 @@ const DEALBREAKER_OPTIONS = [
   'Limited food options',
 ]
 
-const BUDGET_MARKS = [
-  { value: 0, label: '$0' },
-  { value: 100, label: '$100' },
-  { value: 200, label: '$200' },
-  { value: 300, label: '$300' },
-  { value: 500, label: '$500+' },
-]
-
 export default function Layer3Intake({ answers, onChange }) {
+  const budgetMarks = getBudgetMarks(answers.currency ?? 'USD')
+  const currencySymbol = CURRENCY_SYMBOLS[answers.currency ?? 'USD'] ?? (answers.currency ?? 'USD')
   const toggleDealbreaker = (opt) => {
     const current = answers.dealbreakers ?? []
     const next = current.includes(opt) ? current.filter(v => v !== opt) : [...current, opt]
@@ -49,8 +55,9 @@ export default function Layer3Intake({ answers, onChange }) {
               min={0}
               max={500}
               step={10}
-              marks={BUDGET_MARKS}
+              marks={budgetMarks}
               valueLabelDisplay="on"
+              valueLabelFormat={v => `${currencySymbol}${v}`}
               onChange={(_, val) => onChange({ budget: val })}
             />
           </Box>

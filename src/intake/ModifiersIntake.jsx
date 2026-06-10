@@ -78,62 +78,48 @@ export default function ModifiersIntake({ modifiers, contextualTags, availableTa
         </Box>
       )}
 
-      {availableTags?.length > 0 && (
-        <>
-          <Divider sx={{ mb: 3 }} />
-          <Typography variant="h6" fontWeight={600} sx={{ mb: 2 }}>
-            This city has some special angles — do any apply to you?
-          </Typography>
-          <Stack spacing={1}>
-            {availableTags.includes('pilgrimage') && (
-              <Box>
-                <FormControlLabel
-                  label="I'm travelling partly for pilgrimage / faith reasons"
-                  control={
-                    <Switch
-                      checked={contextualTags.pilgrimage ?? false}
-                      onChange={e => onTagChange({ pilgrimage: e.target.checked })}
-                    />
-                  }
-                />
-              </Box>
-            )}
-            {availableTags.includes('fandom') && (
-              <FormControlLabel
-                label="I have pop-culture or fandom destinations on my list"
-                control={
-                  <Switch
-                    checked={contextualTags.fandom ?? false}
-                    onChange={e => onTagChange({ fandom: e.target.checked })}
-                  />
-                }
-              />
-            )}
-            {availableTags.includes('counterculture') && (
-              <FormControlLabel
-                label="I'm interested in counterculture and alternative scenes"
-                control={
-                  <Switch
-                    checked={contextualTags.counterculture ?? false}
-                    onChange={e => onTagChange({ counterculture: e.target.checked })}
-                  />
-                }
-              />
-            )}
-          </Stack>
-          <Box sx={{ mt: 2 }}>
-            <FormControlLabel
-              label="LGBTQ+ scene-seeking"
-              control={
-                <Switch
-                  checked={contextualTags.lgbtq ?? false}
-                  onChange={e => onTagChange({ lgbtq: e.target.checked })}
-                />
-              }
+      <Divider sx={{ mb: 3 }} />
+      <Typography variant="h6" fontWeight={600} sx={{ mb: 2 }}>
+        This city has some special angles — do any apply to you?
+      </Typography>
+      <Stack spacing={1}>
+        <FormControlLabel
+          label="I'm travelling partly for pilgrimage / faith reasons"
+          control={
+            <Switch
+              checked={contextualTags.pilgrimage ?? false}
+              onChange={e => onTagChange({ pilgrimage: e.target.checked })}
             />
-          </Box>
-        </>
-      )}
+          }
+        />
+        <FormControlLabel
+          label="I have pop-culture or fandom destinations on my list"
+          control={
+            <Switch
+              checked={contextualTags.fandom ?? false}
+              onChange={e => onTagChange({ fandom: e.target.checked })}
+            />
+          }
+        />
+        <FormControlLabel
+          label="I'm interested in counterculture and alternative scenes"
+          control={
+            <Switch
+              checked={contextualTags.counterculture ?? false}
+              onChange={e => onTagChange({ counterculture: e.target.checked })}
+            />
+          }
+        />
+        <FormControlLabel
+          label="LGBTQ+"
+          control={
+            <Switch
+              checked={contextualTags.lgbtq ?? false}
+              onChange={e => onTagChange({ lgbtq: e.target.checked })}
+            />
+          }
+        />
+      </Stack>
     </Box>
   )
 }

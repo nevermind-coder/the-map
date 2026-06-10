@@ -96,6 +96,7 @@ Return ONLY a single valid JSON object — no markdown, no code fences, no expla
   "id": "city-slug",
   "name": "City Name",
   "country": "Country Name",
+  "coordinates": { "lat": 0.0000, "lon": 0.0000 },
   "cityType": 2,
   "cityTypology": "concentrated_walkable",
   "coverageRange": [5, 7],
@@ -105,6 +106,7 @@ Return ONLY a single valid JSON object — no markdown, no code fences, no expla
     {
       "id": "district-slug",
       "name": "District Name",
+      "coordinates": { "lat": 0.0000, "lon": 0.0000 },
       "oneLineSummary": "One punchy sentence describing this neighborhood's core character.",
       "description": "Two to three paragraphs covering the neighborhood's vibe, what makes it distinctive, accommodation options, and what a traveler will actually experience day-to-day.",
       "hotSpot": "One concrete must-visit spot or experience.",
@@ -139,6 +141,8 @@ Return ONLY a single valid JSON object — no markdown, no code fences, no expla
 
 Rules:
 - id: lowercase, hyphens only, no spaces (e.g. "old-city", "le-marais")
+- coordinates (city): accurate WGS84 latitude and longitude of the city centre
+- coordinates (district): accurate WGS84 latitude and longitude of the neighbourhood centre
 - cityType: 1=Compact Monocentric, 2=Extended Monocentric, 3=Polycentric
 - cityTypology: exactly one of "concentrated_walkable", "polycentric_walkable", "dispersed_car_dependent"
 - contextualTagsAvailable: array containing any relevant subset of ["pilgrimage","fandom","counterculture","lgbtq"]

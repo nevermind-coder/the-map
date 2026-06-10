@@ -89,5 +89,37 @@ app.post('/api/gemini/generate-city', async (req, res) => {
   }
 })
 
+app.get('/api/country-cities', async (req, res) => {
+  const q = (req.query.q ?? '').trim()
+  if (q.length < 2) return res.json([])
+  try {
+    const ccRes = await fetch(
+      `https://restcountries.com/v3.1/name/${encodeURIComponent(q)}?fullText=false&fields=name,cca2`,
+      { headers: { 'User-Agent': 'the-map-app/1.0' } }
+    )
+    if (!ccRes.ok) return res.json([])
+    const ccData = await ccRes.json()
+    if (!Array.isArray(ccData) || !ccData.length) return res.json([])
+    const countryCode = ccData[0].cca2
+    const countryName = ccData[0].name?.common ?? q
+
+    const geoRes = await fetch(
+      `https://secure.geonames.org/searchJSON?country=${countryCode}&featureClass=P&orderby=population&maxRows=8&username=demo`,
+      { headers: { 'User-Agent': 'the-map-app/1.0' } }
+    )
+    const geoData = await geoRes.json()
+    const cities = (geoData.geonames ?? []).map(g => ({
+      id: `country:${g.geonameId}`,
+      name: g.name,
+      country: countryName,
+      isExternal: true,
+      type: 'country'
+    }))
+    res.json(cities)
+  } catch {
+    res.json([])
+  }
+})
+
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => console.log(`Proxy server running on http://localhost:${PORT}`))

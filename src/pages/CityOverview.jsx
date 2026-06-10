@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Typography, Button, Card, CardActionArea, CardContent, Box, Chip, Stack, Divider } from '@mui/material'
-import MapIcon from '@mui/icons-material/Map'
 import { getCityById } from '../data/index.js'
 import { VALUE_TYPE_LABELS } from '../domain/valueTypes.js'
+import CityMap from '../components/CityMap.jsx'
 
 export default function CityOverview() {
   const { id } = useParams()
@@ -28,22 +28,7 @@ export default function CityOverview() {
         </Button>
       </Box>
 
-      <Box
-        sx={{
-          bgcolor: 'action.hover',
-          borderRadius: 3,
-          height: 200,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          mb: 4,
-        }}
-      >
-        <Stack alignItems="center" spacing={1}>
-          <MapIcon sx={{ fontSize: 48, color: 'text.disabled' }} />
-          <Typography color="text.disabled">Map view — coming in v2</Typography>
-        </Stack>
-      </Box>
+      <CityMap city={city} />
 
       <Typography variant="h5" fontWeight={600} sx={{ mb: 2 }}>
         {city.districts.length} neighborhoods

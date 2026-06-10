@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Box, Button, Stack, Typography } from '@mui/material'
 import StepIndicator from '../components/StepIndicator.jsx'
@@ -17,6 +17,8 @@ export default function IntakeFlow() {
   const city = getCityById(id)
 
   const [step, setStep] = useState(0)
+
+  useEffect(() => { window.scrollTo(0, 0) }, [step])
 
   if (!city) return null
 
