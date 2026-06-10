@@ -9,7 +9,7 @@ import {
   buildComparisonAdvicePrompt,
   buildAnalyzeIntentPrompt,
   buildGenerateCityPrompt,
-} from './gemini.js'
+} from './prompts.js'
 
 const app = express()
 app.use(cors())

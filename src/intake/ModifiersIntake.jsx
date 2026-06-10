@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, Typography, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Select, MenuItem, TextField, Divider, FormControlLabel, Switch, Stack, Chip } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
-import { analyzeIntentText } from '../services/gemini.js'
+import { analyzeIntentText } from '../services/ai.js'
 
 const SPECIAL_OCCASIONS = ['none', 'honeymoon', 'anniversary', 'birthday', 'bleisure', 'other']
 
@@ -67,7 +67,7 @@ export default function ModifiersIntake({ modifiers, contextualTags, availableTa
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 1 }}>
             <AutoAwesomeIcon sx={{ fontSize: 13, color: '#6366f1' }} />
             <Typography variant="overline" sx={{ fontSize: '0.62rem', letterSpacing: 1, color: '#6366f1', lineHeight: 1 }}>
-              Gemini detected
+              Our online helper detected
             </Typography>
           </Box>
           <Stack direction="row" spacing={1} flexWrap="wrap">

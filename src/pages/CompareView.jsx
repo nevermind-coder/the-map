@@ -5,7 +5,7 @@ import { useProfile } from '../context/ProfileContext.jsx'
 import { CRITERIA, CRITERIA_LABELS, WEIGHTED_CRITERIA } from '../domain/criteria.js'
 import AiInsight from '../components/AiInsight.jsx'
 import { useStreamText } from '../hooks/useStreamText.js'
-import { streamComparisonAdvice } from '../services/gemini.js'
+import { streamComparisonAdvice } from '../services/ai.js'
 
 const TAG_CRITERIA = [CRITERIA.CLUB_PRESENCE, CRITERIA.AUTHENTICITY, CRITERIA.SAFETY]
 const TAG_COLORS = {
@@ -25,7 +25,7 @@ function ComparisonInsight({ profile, districts }) {
     () => streamComparisonAdvice(profile, districts),
     [profile.derived?.persona, districtIds]
   )
-  return <AiInsight text={text} loading={loading} error={error} label="Gemini — my recommendation" />
+  return <AiInsight text={text} loading={loading} error={error} label="Our online helper — my recommendation" />
 }
 
 export default function CompareView() {

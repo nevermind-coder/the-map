@@ -5,7 +5,7 @@ async function* streamFromApi(endpoint, body) {
     body: JSON.stringify(body),
   })
 
-  if (!response.ok) throw new Error(`Gemini proxy error: ${response.status}`)
+  if (!response.ok) throw new Error(`AI proxy error: ${response.status}`)
 
   const reader = response.body.getReader()
   const decoder = new TextDecoder()

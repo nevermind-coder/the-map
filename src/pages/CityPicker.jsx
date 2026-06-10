@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Container, Typography, Card, CardActionArea, CardContent, Box, TextField, Chip, Button, CircularProgress, Alert } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import { getAllCities, cacheCity } from '../data/index.js'
-import { generateCityData } from '../services/gemini.js'
+import { generateCityData } from '../services/ai.js'
 
 const TYPE_LABELS = { 1: 'Compact', 2: 'Extended', 3: 'Polycentric', 4: 'Extreme Polycentric' }
 const TYPOLOGY_LABELS = {
@@ -79,7 +79,7 @@ export default function CityPicker() {
             '&:hover': { borderColor: '#6366f1', bgcolor: 'rgba(99,102,241,0.05)' },
           }}
         >
-          {generating ? `Mapping ${trimmed} with Gemini…` : `Explore "${trimmed}" with Gemini`}
+          {generating ? `Mapping ${trimmed} with our online helper…` : `Explore "${trimmed}" with our online helper`}
         </Button>
       )}
 

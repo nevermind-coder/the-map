@@ -7,7 +7,7 @@ import { useProfile } from '../context/ProfileContext.jsx'
 import { VALUE_TYPE_LABELS } from '../domain/valueTypes.js'
 import { CRITERIA, CRITERIA_LABELS } from '../domain/criteria.js'
 import { useStreamText } from '../hooks/useStreamText.js'
-import { streamDistrictNarrative } from '../services/gemini.js'
+import { streamDistrictNarrative } from '../services/ai.js'
 
 const SAFETY_LABEL = { safe: 'Safe area', soft_crime: 'Watch Out — some petty crime reported', hard_crime: 'High-crime area' }
 const SAFETY_SEVERITY = { safe: 'success', soft_crime: 'warning', hard_crime: 'error' }
@@ -17,7 +17,7 @@ function DistrictNarrative({ profile, district }) {
     () => streamDistrictNarrative(profile, district),
     [profile.derived?.persona, district.id]
   )
-  return <AiInsight text={text} loading={loading} error={error} label="Gemini — your experience here" />
+  return <AiInsight text={text} loading={loading} error={error} label="Our online helper — your experience here" />
 }
 
 export default function DistrictProfile() {

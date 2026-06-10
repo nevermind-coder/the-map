@@ -1,7 +1,7 @@
 import { Box, Typography, CircularProgress, Skeleton } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 
-export default function AiInsight({ text, loading, error, label = 'Gemini' }) {
+export default function AiInsight({ text, loading, error, label = 'Our online helper' }) {
   if (error || (!loading && !text)) return null
 
   return (

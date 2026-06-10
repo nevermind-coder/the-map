@@ -7,14 +7,14 @@ import { useProfile } from '../context/ProfileContext.jsx'
 import { getCityById } from '../data/index.js'
 import { PERSONA_DESCRIPTIONS } from '../engine/personaProjection.js'
 import { useStreamText } from '../hooks/useStreamText.js'
-import { streamPersonaInsight, streamDistrictInsight } from '../services/gemini.js'
+import { streamPersonaInsight, streamDistrictInsight } from '../services/ai.js'
 
 function PersonaInsight({ profile }) {
   const { text, loading, error } = useStreamText(
     () => streamPersonaInsight(profile),
     [profile.derived?.persona, profile.modifiers?.freeText]
   )
-  return <AiInsight text={text} loading={loading} error={error} label="Gemini — your travel style" />
+  return <AiInsight text={text} loading={loading} error={error} label="Our online helper — your travel style" />
 }
 
 function DistrictInsight({ profile, district }) {
